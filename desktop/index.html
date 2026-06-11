@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HumanOS Desktop Companion</title>
+  <style>
+    body {
+      margin: 0;
+      background: #050505;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .app {
+      height: 100vh;
+      padding: 30px;
+      background:
+        radial-gradient(circle at top left, rgba(89,195,255,0.22), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(122,17,40,0.25), transparent 40%),
+        #050505;
+    }
+
+    h1 {
+      color: #59c3ff;
+      text-shadow: 0 0 18px rgba(89,195,255,0.8);
+    }
+
+    .status {
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(89,195,255,0.35);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #7cffc4;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #7cffc4;
+      margin-right: 8px;
+    }
+
+    small {
+      color: #9eb4b7;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>HumanOS</h1>
+    <p>Your mind, running in real time.</p>
+
+    <div class="status">
+      <p><span class="dot"></span>Desktop Companion Active</p>
+      <small>Tracking active desktop applications and sending behavior signals to HumanOS.</small>
+    </div>
+  </div>
+</body>
+</html>

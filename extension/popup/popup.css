@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  width: 280px;
+  background: #050505;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.popup {
+  padding: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(89, 195, 255, 0.22), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(122, 17, 40, 0.25), transparent 40%),
+    #050505;
+}
+
+h2 {
+  color: #59c3ff;
+  margin-bottom: 6px;
+  text-shadow: 0 0 14px rgba(89, 195, 255, 0.8);
+}
+
+p {
+  color: #bdefff;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.status-box {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(89, 195, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #7cffc4;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #7cffc4;
+}
+
+small {
+  color: #9eb4b7;
+  line-height: 1.5;
+}

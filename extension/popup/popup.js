@@ -1,0 +1,1 @@
+console.log("HumanOS Tracker popup opened");
