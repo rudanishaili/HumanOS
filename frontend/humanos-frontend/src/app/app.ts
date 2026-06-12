@@ -3,6 +3,7 @@ import { SystemService } from './services/system.service';
 import { FutureSelfService } from './services/future-self.service';
 import { TimelineService } from './services/timeline.service';
 import { CommonModule } from '@angular/common';
+import { InsightService } from './services/insight.service';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,8 @@ export class App implements OnInit {
   timelineChats: any[] = [];
   timelineActivities: any[] = [];
   timelineEvents: any[] = [];
+  humanOSScore = 0;
+  systemInsight = '';
 
   futureResponse = '';
 
@@ -31,12 +34,14 @@ export class App implements OnInit {
   private systemService: SystemService,
   private futureSelfService: FutureSelfService,
   private timelineService: TimelineService,
+  private insightService: InsightService,
   private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.loadMetrics();
     this.loadTimeline();
+    this.loadInsight();
 
     setInterval(() => {
       this.loadMetrics();
@@ -50,6 +55,7 @@ export class App implements OnInit {
         this.focusStability = data.focusStability;
         this.batteryRecovery = data.batteryRecovery;
         this.systemTemperature = data.systemTemperature;
+        this.humanOSScore = data.humanOSScore;
 
         this.temperatureLabel = this.getTemperatureLabel(
           data.systemTemperature
@@ -76,6 +82,18 @@ export class App implements OnInit {
     },
     error: (error) => {
       console.error('Timeline error:', error);
+    }
+  });
+}
+
+loadInsight(): void {
+  this.insightService.getInsight().subscribe({
+    next: (data: any) => {
+      this.systemInsight = data.insight;
+      this.cdr.detectChanges();
+    },
+    error: (error) => {
+      console.error('Insight error:', error);
     }
   });
 }

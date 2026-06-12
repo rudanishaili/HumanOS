@@ -37,12 +37,18 @@
         <div class="core-display">
           <div class="pulse-ring">
             <div>
-              <h2>{{ focusStability }}</h2>
-              <span>FOCUS INDEX</span>
+              <h2>{{ humanOSScore }}</h2>
+              <span>HUMANOS SCORE</span>
             </div>
           </div>
 
           <div class="core-stats">
+
+            <div>
+              <span>Focus Stability</span>
+              <strong>{{ focusStability }}%</strong>
+            </div>
+
             <div>
               <span>Mental CPU</span>
               <strong>{{ mentalCPU }}%</strong>
@@ -118,6 +124,18 @@
 
         <pre>{{ futureResponse || 'Awaiting Future Self signal...' }}</pre>
       </div>
+
+      <section class="insight-terminal">
+  <div class="terminal-bar">
+    <span></span>
+    <p>SYSTEM_INSIGHT.AI</p>
+  </div>
+
+  <div class="insight-content">
+    <h3>Today's HumanOS Insight</h3>
+    <p>{{ systemInsight || 'Analyzing current system behavior...' }}</p>
+  </div>
+</section>
 
     </section>
 

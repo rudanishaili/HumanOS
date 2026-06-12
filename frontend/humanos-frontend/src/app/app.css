@@ -629,3 +629,48 @@
     grid-template-columns: 1fr;
   }
 }
+
+.insight-terminal {
+  margin-top: 22px;
+  padding: 24px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(0, 0, 0, 0.54);
+  border: 1px solid rgba(124, 255, 196, 0.18);
+
+  box-shadow:
+    0 0 35px rgba(124, 255, 196, 0.08),
+    inset 0 0 30px rgba(255, 255, 255, 0.025);
+}
+
+.insight-terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(135deg, rgba(124, 255, 196, 0.08), transparent 38%),
+    radial-gradient(circle at top right, rgba(89, 195, 255, 0.14), transparent 40%);
+
+  pointer-events: none;
+}
+
+.insight-content {
+  position: relative;
+  z-index: 1;
+}
+
+.insight-content h3 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.insight-content p {
+  max-width: 900px;
+  color: #c8e9df;
+  font-size: 15px;
+  line-height: 1.8;
+}

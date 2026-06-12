@@ -5,6 +5,7 @@ const desktopRoutes = require("./routes/desktopRoutes");
 const systemRoutes = require("./routes/systemRoutes");
 const futureSelfRoutes = require("./routes/futureSelfRoutes");
 const timelineRoutes = require("./routes/timelineRoutes");
+const insightRoutes = require("./routes/insightRoutes");
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use("/api/desktop", desktopRoutes);
 app.use("/api/system", systemRoutes);
 app.use("/api/future-self", futureSelfRoutes);
 app.use("/api/timeline", timelineRoutes);
+app.use("/api/insights", insightRoutes);
 
 module.exports = app;
