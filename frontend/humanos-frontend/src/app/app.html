@@ -1,0 +1,147 @@
+<div class="os-screen">
+
+  <aside class="os-dock">
+    <div class="dock-logo">H</div>
+
+    <nav>
+      <span class="active">SYS</span>
+      <span>CPU</span>
+      <span>AI</span>
+      <span>LOG</span>
+    </nav>
+  </aside>
+
+  <main class="os-main">
+
+    <section class="os-header">
+      <div>
+        <p class="kernel-label">HUMANOS / KERNEL ACTIVE</p>
+        <h1>HumanOS</h1>
+        <span>Your mind, running in real time.</span>
+      </div>
+
+      <div class="live-status">
+        <span></span>
+        LIVE SYSTEM
+      </div>
+    </section>
+
+    <section class="os-grid">
+
+      <div class="kernel-panel large">
+        <div class="panel-top">
+          <p>COGNITIVE CORE</p>
+          <strong>{{ temperatureLabel }}</strong>
+        </div>
+
+        <div class="core-display">
+          <div class="pulse-ring">
+            <div>
+              <h2>{{ focusStability }}</h2>
+              <span>FOCUS INDEX</span>
+            </div>
+          </div>
+
+          <div class="core-stats">
+            <div>
+              <span>Mental CPU</span>
+              <strong>{{ mentalCPU }}%</strong>
+            </div>
+
+            <div>
+              <span>Recovery</span>
+              <strong>{{ batteryRecovery }}%</strong>
+            </div>
+
+            <div>
+              <span>System Temp</span>
+              <strong>{{ systemTemperature }}%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kernel-panel">
+        <div class="panel-top">
+          <p>PROCESS STACK</p>
+          <strong>RUNNING</strong>
+        </div>
+
+        <div class="process-list">
+          <div>
+            <span>Focus Engine</span>
+            <b class="green">STABLE</b>
+          </div>
+
+          <div>
+            <span>Learning Momentum</span>
+            <b class="blue">RISING</b>
+          </div>
+
+          <div>
+            <span>Mental Load</span>
+            <b class="red">{{ mentalCPU >= 75 ? 'HIGH' : 'NORMAL' }}</b>
+          </div>
+
+          <div>
+            <span>Recovery Cycle</span>
+            <b class="green">{{ batteryRecovery >= 60 ? 'ACTIVE' : 'LOW' }}</b>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="terminal-section">
+
+      <div class="future-terminal">
+        <div class="terminal-bar">
+          <span></span>
+          <p>FUTURE_SELF.EXE</p>
+        </div>
+
+        <textarea
+          #questionBox
+          placeholder="Ask your future self..."
+        ></textarea>
+
+        <button type="button" (click)="askFutureSelf(questionBox.value)">
+          Execute Synchronization
+        </button>
+      </div>
+
+      <div class="response-terminal">
+        <div class="terminal-bar">
+          <span></span>
+          <p>RESPONSE_STREAM.LOG</p>
+        </div>
+
+        <pre>{{ futureResponse || 'Awaiting Future Self signal...' }}</pre>
+      </div>
+
+    </section>
+
+    <section class="timeline-terminal">
+      <div class="terminal-bar">
+        <span></span>
+        <p>NEURAL_TIMELINE.LOG</p>
+      </div>
+
+      <div class="event-stream">
+        <div
+          class="event-line"
+          *ngFor="let event of timelineEvents"
+          [ngClass]="event.intensity"
+        >
+          <span class="event-time">{{ event.createdAt | date:'shortTime' }}</span>
+          <div>
+            <strong>{{ event.title }}</strong>
+            <p>{{ event.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const ChatHistory = require("../models/ChatHistory");
 const ActivityLog = require("../models/ActivityLog");
+const generateTimelineEvents = require("../services/timelineEngine");
 
 router.get("/", async (req, res) => {
   try {
@@ -15,9 +16,12 @@ router.get("/", async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(20);
 
+    const events = generateTimelineEvents(chats, activities);
+
     res.json({
       chats,
-      activities
+      activities,
+      events
     });
 
   } catch (error) {
