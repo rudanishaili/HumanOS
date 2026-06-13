@@ -1,160 +1,194 @@
-<div class="os-screen">
+<div class="humanos-page">
 
-  <aside class="os-dock">
-    <div class="dock-logo">H</div>
+  <aside class="sidebar">
+    <div class="logo-block">
+      <div class="logo-mark">H</div>
+      <div>
+        <h2>HumanOS</h2>
+        <p>Mind dashboard</p>
+      </div>
+    </div>
 
     <nav>
-      <span class="active">SYS</span>
-      <span>CPU</span>
-      <span>AI</span>
-      <span>LOG</span>
+      <a class="active">Overview</a>
+      <a>Focus</a>
+      <a>Future Self</a>
+      <a>Timeline</a>
+      <a>Reports</a>
     </nav>
   </aside>
 
-  <main class="os-main">
+  <main class="main">
 
-    <section class="os-header">
+    <section class="hero">
       <div>
-        <p class="kernel-label">HUMANOS / KERNEL ACTIVE</p>
-        <h1>HumanOS</h1>
-        <span>Your mind, running in real time.</span>
+        <span class="pill">System online</span>
+        <h1>Your mind, running in real time.</h1>
+        <p>
+          HumanOS transforms your browser activity, desktop signals,
+          focus patterns, and AI reflections into a simple personal operating system.
+        </p>
       </div>
 
-      <div class="live-status">
-        <span></span>
-        LIVE SYSTEM
+      <div class="score-card">
+        <span>HumanOS Score</span>
+        <strong>{{ humanOSScore }}</strong>
+        <small>{{ temperatureLabel }} system state</small>
       </div>
     </section>
 
-    <section class="os-grid">
-
-      <div class="kernel-panel large">
-        <div class="panel-top">
-          <p>COGNITIVE CORE</p>
-          <strong>{{ temperatureLabel }}</strong>
-        </div>
-
-        <div class="core-display">
-          <div class="pulse-ring">
-            <div>
-              <h2>{{ humanOSScore }}</h2>
-              <span>HUMANOS SCORE</span>
-            </div>
-          </div>
-
-          <div class="core-stats">
-
-            <div>
-              <span>Focus Stability</span>
-              <strong>{{ focusStability }}%</strong>
-            </div>
-
-            <div>
-              <span>Mental CPU</span>
-              <strong>{{ mentalCPU }}%</strong>
-            </div>
-
-            <div>
-              <span>Recovery</span>
-              <strong>{{ batteryRecovery }}%</strong>
-            </div>
-
-            <div>
-              <span>System Temp</span>
-              <strong>{{ systemTemperature }}%</strong>
-            </div>
-          </div>
-        </div>
+    <section class="metrics-row">
+      <div class="metric-card">
+        <span>Focus Stability</span>
+        <strong>{{ focusStability }}%</strong>
+        <p>Current attention strength</p>
       </div>
 
-      <div class="kernel-panel">
-        <div class="panel-top">
-          <p>PROCESS STACK</p>
-          <strong>RUNNING</strong>
+      <div class="metric-card">
+        <span>Mental CPU</span>
+        <strong>{{ mentalCPU }}%</strong>
+        <p>Current cognitive load</p>
+      </div>
+
+      <div class="metric-card">
+        <span>Recovery</span>
+        <strong>{{ batteryRecovery }}%</strong>
+        <p>Rest and idle balance</p>
+      </div>
+
+      <div class="metric-card">
+        <span>System Temperature</span>
+        <strong>{{ systemTemperature }}%</strong>
+        <p>Pressure level</p>
+      </div>
+    </section>
+
+    <section class="two-column">
+
+      <div class="panel insight-panel">
+        <div class="section-title">
+          <span>AI Analysis</span>
+          <h3>Today's HumanOS Insight</h3>
         </div>
 
-        <div class="process-list">
+        <p class="insight-text">
+          {{ systemInsight || 'Analyzing current system behavior...' }}
+        </p>
+      </div>
+
+      <div class="panel process-panel">
+        <div class="section-title">
+          <span>System Health</span>
+          <h3>Current State</h3>
+        </div>
+
+        <div class="health-list">
           <div>
             <span>Focus Engine</span>
-            <b class="green">STABLE</b>
+            <strong class="green">Stable</strong>
           </div>
 
           <div>
             <span>Learning Momentum</span>
-            <b class="blue">RISING</b>
+            <strong class="blue">Rising</strong>
           </div>
 
           <div>
             <span>Mental Load</span>
-            <b class="red">{{ mentalCPU >= 75 ? 'HIGH' : 'NORMAL' }}</b>
+            <strong class="maroon">{{ mentalCPU >= 75 ? 'High' : 'Normal' }}</strong>
           </div>
 
           <div>
             <span>Recovery Cycle</span>
-            <b class="green">{{ batteryRecovery >= 60 ? 'ACTIVE' : 'LOW' }}</b>
+            <strong class="green">{{ batteryRecovery >= 60 ? 'Active' : 'Low' }}</strong>
           </div>
         </div>
       </div>
 
     </section>
 
-    <section class="terminal-section">
-
-      <div class="future-terminal">
-        <div class="terminal-bar">
-          <span></span>
-          <p>FUTURE_SELF.EXE</p>
-        </div>
-
-        <textarea
-          #questionBox
-          placeholder="Ask your future self..."
-        ></textarea>
-
-        <button type="button" (click)="askFutureSelf(questionBox.value)">
-          Execute Synchronization
-        </button>
+    <section class="future-section panel">
+      <div class="section-title">
+        <span>Future Self</span>
+        <h3>Ask your future self</h3>
       </div>
 
-      <div class="response-terminal">
-        <div class="terminal-bar">
-          <span></span>
-          <p>RESPONSE_STREAM.LOG</p>
+      <div class="future-grid">
+        <div>
+          <textarea
+            #questionBox
+            placeholder="Ask something like: Should I focus on DSA today?"
+          ></textarea>
+
+          <button type="button" (click)="askFutureSelf(questionBox.value)">
+            Ask Future Self
+          </button>
         </div>
 
-        <pre>{{ futureResponse || 'Awaiting Future Self signal...' }}</pre>
+        <div class="future-answer">
+          <span>Response</span>
+          <pre>{{ futureResponse || 'Your future self response will appear here.' }}</pre>
+        </div>
       </div>
-
-      <section class="insight-terminal">
-  <div class="terminal-bar">
-    <span></span>
-    <p>SYSTEM_INSIGHT.AI</p>
-  </div>
-
-  <div class="insight-content">
-    <h3>Today's HumanOS Insight</h3>
-    <p>{{ systemInsight || 'Analyzing current system behavior...' }}</p>
-  </div>
-</section>
-
     </section>
 
-    <section class="timeline-terminal">
-      <div class="terminal-bar">
-        <span></span>
-        <p>NEURAL_TIMELINE.LOG</p>
+    <section class="report-section panel" *ngIf="dailyReport">
+      <div class="section-title">
+        <span>Daily Report</span>
+        <h3>Today’s Summary</h3>
       </div>
 
-      <div class="event-stream">
+      <div class="report-grid">
+        <div class="report-main">
+          <span>Status</span>
+          <strong>{{ dailyReport.status }}</strong>
+          <p>{{ dailyReport.date | date:'mediumDate' }}</p>
+        </div>
+
+        <div>
+          <span>Browser Signals</span>
+          <strong>{{ dailyReport.summary.browserActivities }}</strong>
+        </div>
+
+        <div>
+          <span>Tab Switches</span>
+          <strong>{{ dailyReport.summary.tabSwitches }}</strong>
+        </div>
+
+        <div>
+          <span>Learning Events</span>
+          <strong>{{ dailyReport.summary.learningActivities }}</strong>
+        </div>
+
+        <div>
+          <span>Future Self Sessions</span>
+          <strong>{{ dailyReport.summary.futureSelfSessions }}</strong>
+        </div>
+      </div>
+
+      <p class="recommendation">
+        {{ dailyReport.recommendation }}
+      </p>
+    </section>
+
+    <section class="timeline-section panel">
+      <div class="section-title">
+        <span>Activity Timeline</span>
+        <h3>Recent HumanOS Events</h3>
+      </div>
+
+      <div class="timeline-list">
         <div
-          class="event-line"
+          class="timeline-item"
           *ngFor="let event of timelineEvents"
           [ngClass]="event.intensity"
         >
-          <span class="event-time">{{ event.createdAt | date:'shortTime' }}</span>
+          <div class="timeline-dot"></div>
+
           <div>
-            <strong>{{ event.title }}</strong>
+            <h4>{{ event.title }}</h4>
             <p>{{ event.description }}</p>
+            <small>{{ event.createdAt | date:'short' }}</small>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ const systemRoutes = require("./routes/systemRoutes");
 const futureSelfRoutes = require("./routes/futureSelfRoutes");
 const timelineRoutes = require("./routes/timelineRoutes");
 const insightRoutes = require("./routes/insightRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use("/api/system", systemRoutes);
 app.use("/api/future-self", futureSelfRoutes);
 app.use("/api/timeline", timelineRoutes);
 app.use("/api/insights", insightRoutes);
+app.use("/api/reports", reportRoutes);
 
 module.exports = app;

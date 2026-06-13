@@ -4,6 +4,7 @@ import { FutureSelfService } from './services/future-self.service';
 import { TimelineService } from './services/timeline.service';
 import { CommonModule } from '@angular/common';
 import { InsightService } from './services/insight.service';
+import { ReportService } from './services/report.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,8 @@ export class App implements OnInit {
 
   futureResponse = '';
 
+  dailyReport: any = null;
+
   temperatureLabel = 'Stable';
 
   constructor(
@@ -35,6 +38,7 @@ export class App implements OnInit {
   private futureSelfService: FutureSelfService,
   private timelineService: TimelineService,
   private insightService: InsightService,
+  private reportService: ReportService,
   private cdr: ChangeDetectorRef
   ) {}
 
@@ -42,6 +46,7 @@ export class App implements OnInit {
     this.loadMetrics();
     this.loadTimeline();
     this.loadInsight();
+    this.loadDailyReport();
 
     setInterval(() => {
       this.loadMetrics();
@@ -82,6 +87,18 @@ export class App implements OnInit {
     },
     error: (error) => {
       console.error('Timeline error:', error);
+    }
+  });
+}
+
+loadDailyReport(): void {
+  this.reportService.getDailyReport().subscribe({
+    next: (data: any) => {
+      this.dailyReport = data;
+      this.cdr.detectChanges();
+    },
+    error: (error) => {
+      console.error('Daily report error:', error);
     }
   });
 }
